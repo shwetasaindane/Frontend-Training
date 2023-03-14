@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Animation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 80vh;
+        background-image: url("d-wallpaper-bg.jpg");
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .fog {
+        height: 300px;
+        width: 300%;
+        display: block;
+        background-image: url("fog.png");
+        animation: fog 8s linear infinite;
+      }
+
+      @keyframes fog {
+        100% {
+          transform: translateX(-300px);
+        }
+      }
+
+      .red-car {
+        left: 50px;
+        position: absolute;
+        bottom: 190px;
+        z-index: 3;
+        animation: redcar 5s linear normal;
+        background-image: url("mghector.png");
+        animation-fill-mode: forwards;
+      }
+
+      .red-car,.blue-car{
+        height: 150px;
+        width: 315px;
+        background-size: cover;
+      }
+
+      .red-car::before,.red-car::after{
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        z-index: 3;
+        content: "";
+        animation:wheelrotation 1s linear normal infinite;
+        position: absolute;
+        bottom: 10px;
+      }
+
+      .red-car::before {
+        background-image: url("hector-wheel.png");
+        left: 37px;
+      }
+
+      .red-car::after {
+        background-image: url("hector-wheel.png");
+        right: 35px;
+      }
+
+      @keyframes redcar {
+        100% {
+          transform: translateX(1500px);
+        }
+      }
+
+      @keyframes wheelrotation {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .blue-car {
+        right: 90px;
+        position: absolute;
+        bottom: 210px;
+        animation: bluecar 5s linear normal;
+        background-image: url("mgzs.png");
+        animation-fill-mode: forwards;
+      }
+
+      .blue-car::before,.blue-car::after{
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        content: "";
+        z-index: 2;
+        animation:wheelrotation 1s linear reverse infinite;
+        position: absolute;
+        bottom: -5px;
+      }
+
+      .blue-car::before {
+        background-image: url("mgzswheel.png");
+        left: 41px;
+      }
+
+      .blue-car::after {
+        background-image: url("mgzswheel.png");
+        left: 233px;
+      }
+
+      @keyframes bluecar {
+        100% {
+          transform: translateX(-1500px);
+        }
+      }
+      .middle-car {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        bottom: 190px;
+        z-index: 3;
+      }
+
+      .middle-car--image {
+        width: 150px;
+        height: 150px;
+        animation: middlecar 3s 2.4s forwards;
+        opacity: 0;
+      }
+
+      @keyframes middlecar {
+        0% {
+          opacity: 1;
+        }
+
+        100% {
+          transform: translateY(100px) scale(1.5);
+          opacity: 1;
+        }
+      }
+
+      .introducing-title {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 200px;
+        z-index: 3;
+      }
+
+      .introducing-title--image {
+        width: 285px;
+        height: 65px;
+        animation: moveup 2s 2.4s linear normal;
+        opacity: 0;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes moveup {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-80px) scale(1.5);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fog"></div>
+
+    <div class="red-car"></div>
+
+    <div class="blue-car"></div>
+
+    <div class="middle-car">
+      <img
+        src="gloster-front-view.png"
+        alt="Gloster front view"
+        class="middle-car--image"
+      />
+    </div>
+
+    <div class="introducing-title">
+      <img
+        src="now-introducing-gloster.png"
+        alt="Now introducing goster"
+        class="introducing-title--image"
+      />
+    </div>
+  </body>
+</html>
